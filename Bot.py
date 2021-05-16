@@ -12,13 +12,13 @@ port = 5001
 SEPARATOR = "<----->"
 BUFFER_SIZE = 4096
 filesize = os.path.getsize(filename)
+s = socket.socket()
 
 def getpick():
     with mss() as sct:
         filename = sct.shot()
 
 def sendimg():
-    s = socket.socket()
     s.connect((host, port))
     s.send(f"{filename}{SEPARATOR}{filesize}".encode())
 
